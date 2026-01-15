@@ -1,8 +1,9 @@
 install-homebrew:
-	@echo "This will download the Homebrew install script (from https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)and run it. Continue? (Y/n): " && read ans && [ $${ans:-Y} = Y ] || [ $$ans = y ]
+	@echo "This will download and run the Homebrew install script (from https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh). Running shell script from a static url is dangerous. Continue? (Y/n): " && read ans && [ $${ans:-Y} = Y ] || [ $$ans = y ]
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 install-deps:
+	@git config --global alias.lola "log --graph --decorate --pretty='format:%C(auto)%h %d %s %C(green)%an%C(bold blue) %ad' --abbrev-commit --all --date=relative"
 	brew tap hashicorp/tap
 	brew install neovim rg sl htop hashicorp/tap/terraform hashicorp/tap/packer tldr wget fastfetch node z tmux fzf fd
 
@@ -12,7 +13,7 @@ setup-zsh:
 	zsh -c "source ~/.zshrc"
 
 install-omz:
-	@echo "This will install Oh My Zsh (from https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh), running random shell scripts off the internet is dangerous. Continue? (Y/n): " && read ans && [ $${ans:-Y} = Y ] || [ $$ans = y ]
+	@echo "This will download and run Oh My Zsh's install script (from https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh). Running shell script from a static url is dangerous.  Continue? (Y/n): " && read ans && [ $${ans:-Y} = Y ] || [ $$ans = y ]
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 setup-tmux:
@@ -22,6 +23,8 @@ setup-tmux:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	cp tmux.conf ~/.tmux.conf
 	~/.tmux/plugins/tpm/scripts/install_plugins.sh
+
+
 
 install-eepyvim:
 	@echo "This will delete your existing neovim config Continue? (Y/n): " && read ans && [ $${ans:-Y} = Y ] || [ $$ans = y ]
