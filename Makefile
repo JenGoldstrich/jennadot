@@ -3,7 +3,6 @@ install-homebrew:
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 install-deps:
-	@git config --global alias.lola "log --graph --decorate --pretty='format:%C(auto)%h %d %s %C(green)%an%C(bold blue) %ad' --abbrev-commit --all --date=relative"
 	brew tap hashicorp/tap
 	brew install --cask gcloud-cli
 	brew install azure-cli awscli bat neovim rg sl htop hashicorp/tap/terraform hashicorp/tap/packer tldr wget fastfetch node z tmux fzf fd
