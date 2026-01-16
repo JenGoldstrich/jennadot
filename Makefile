@@ -5,7 +5,12 @@ install-homebrew:
 install-deps:
 	@git config --global alias.lola "log --graph --decorate --pretty='format:%C(auto)%h %d %s %C(green)%an%C(bold blue) %ad' --abbrev-commit --all --date=relative"
 	brew tap hashicorp/tap
-	brew install neovim rg sl htop hashicorp/tap/terraform hashicorp/tap/packer tldr wget fastfetch node z tmux fzf fd
+	brew install --cask gcloud-cli
+	brew install azure-cli awscli bat neovim rg sl htop hashicorp/tap/terraform hashicorp/tap/packer tldr wget fastfetch node z tmux fzf fd
+
+setup-git-alias:
+	@git config --global alias.lola "log --graph --decorate --pretty='format:%C(auto)%h %d %s %C(green)%an%C(bold blue) %ad' --abbrev-commit --all --date=relative"
+	@git config --global alias.co "checkout"
 
 setup-zsh:
 	@echo "This will wipe your existing ~/.zshrc file.  Continue? (Y/n): " && read ans && [ $${ans:-Y} = Y ] || [ $$ans = y ]
